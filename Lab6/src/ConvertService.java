@@ -162,15 +162,27 @@ public class ConvertService {
 
     private void ConvertToBinary(long value) {
         String bValue = "";
-        for (int i=32; i>0; i--) {
+        for (int i=32; i>=0; i--) { //needed to be changed to >=0
             long multiplier = (long)Math.pow(2, i);
-            if (value > multiplier) {
+            if (value >= multiplier) { //needed to be changed to >= multiplier
                 bValue = bValue + "1";
                 value = value - multiplier;
             } else {
                 bValue = bValue + "0";
             } 
         }
+
+        //trim leading 0's off
+        int i=bValue.indexOf("1"); //Find the first 1 in the binary number
+        if (i>=0)
+        {
+            bValue=bValue.substring(i); //remove all leading 0's
+        }
+        else if (i==-1) //If the number doesnt have any 1's in it
+        {
+            bValue=bValue.substring(bValue.length()-1); //binary value = '0'
+        }
+
         this.binaryValue = bValue;
     }
 
