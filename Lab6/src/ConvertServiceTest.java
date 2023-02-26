@@ -85,54 +85,77 @@ public class ConvertServiceTest {
     @Test
     public void ConvertService_toBinary_NormalNumber()
     {
-        ConvertService bs=new ConvertService(12l);
+        long val=12l;
+        ConvertService bs=new ConvertService(val);
 
         assertEquals(true, bs.IsValid());
         assertEquals("1100", bs.BinaryValue());
+        assertEquals("C", bs.HexadecimalValue());
+        assertEquals(val, bs.IntegerValue());
     }
 
     @Test
     public void ConvertService_toBinary_NormalNumber2()
     {
-        ConvertService bs=new ConvertService(250l);
+        long val=250l;
+        ConvertService bs=new ConvertService(val);
 
         assertEquals(true, bs.IsValid());
         assertEquals("11111010", bs.BinaryValue());
+        assertEquals("FA", bs.HexadecimalValue());
+        assertEquals(val, bs.IntegerValue());
     }
+        
+
     @Test
     public void ConvertService_toBinary_LargeNum() //Test a large number
     {
-        ConvertService bs=new ConvertService(5820753l);
+        long val=5820753l;
+        ConvertService bs=new ConvertService(val);
 
         assertEquals(true, bs.IsValid());
         assertEquals("10110001101000101010001", bs.BinaryValue());
+        assertEquals("58D151", bs.HexadecimalValue());
+        assertEquals(val, bs.IntegerValue());
     }
 
     @Test
     public void ConvertService_toBinary_0()
     {
-        ConvertService bs=new ConvertService(0l);
+        long val=0l;
+        ConvertService bs=new ConvertService(val);
+
 
         assertEquals(true, bs.IsValid());
         assertEquals("0", bs.BinaryValue());
+        assertEquals("0", bs.HexadecimalValue());
+        assertEquals(val, bs.IntegerValue());
     }
 
     @Test
     public void ConvertService_toBinary_1()
     {
-        ConvertService bs=new ConvertService(1l);
+        long val=1l;
+        ConvertService bs=new ConvertService(val);
+
 
         assertEquals(true, bs.IsValid());
         assertEquals("1", bs.BinaryValue());
+        assertEquals("1", bs.HexadecimalValue());
+        assertEquals(val, bs.IntegerValue());
     }
 
     @Test
     public void ConvertService_toBinary_Leading0s() //Test a number with leading 0's
     {
-        ConvertService bs=new ConvertService(00002l);
+        long val=000000000002l;
+        ConvertService bs=new ConvertService(val);
+
 
         assertEquals(true, bs.IsValid());
         assertEquals("10", bs.BinaryValue());
+        assertEquals("2", bs.HexadecimalValue());
+        assertEquals(val, bs.IntegerValue());
     }
-
 }
+

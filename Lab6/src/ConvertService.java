@@ -18,7 +18,7 @@ public class ConvertService {
         this.intValue = intValue;
         Validate(intValue);
         if (this.isValid) {
-            ConvertToBinary(intValue);
+            ConvertToBinary(intValue); //Needs to call this first so that the ConvertToHex can use the binary value
             ConvertToHex(this.binaryValue);
         }
     }
@@ -162,7 +162,7 @@ public class ConvertService {
 
     private void ConvertToBinary(long value) {
         String bValue = "";
-        for (int i=32; i>=0; i--) { //needed to be changed to >=0
+        for (int i=31; i>=0; i--) { //needed to be changed to >=0
             long multiplier = (long)Math.pow(2, i);
             if (value >= multiplier) { //needed to be changed to >= multiplier
                 bValue = bValue + "1";
